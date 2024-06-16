@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle Financeiro</title>
+    <link rel="stylesheet" href="orcamento.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        integrity="sha512-j8Lp/djylBMy2gH+8zBrXlX7NwTvI5H/rOvM4PMTGU3A9dbw/14FbOvI9v3GyAb6zW6gtbGldq1mc2cZxPT4Yw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <script src="orcamento.js" defer></script>
+    <style>
+        /* Modal styling */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="entry">
+                <span>Entradas: R$</span>
+                <span id="entradas">0.00</span>
+            </div>
+            <div class="exit">
+                <span>Saídas: R$</span>
+                <span id="saidas">0.00</span>
+            </div>
+            <div class="total">
+                <span>Total: R$</span>
+                <span id="total">0.00</span>
+            </div>
+        </div>
+        <form id="orcamento-form" class="form">
+            <input type="text" id="descricao" placeholder="Descrição">
+            <input type="number" id="valor" placeholder="Valor">
+            <select id="tipo">
+                <option value="">Tipo</option>
+                <option value="entrada">Entrada</option>
+                <option value="saida">Saída</option>
+            </select>
+            <button type="submit" id="incluir">Incluir</button>
+        </form>
+        <table>
+            <thead>
+                <tr>
+                    <th>Descrição</th>
+                    <th>Valor</th>
+                    <th>Tipo</th>
+                    <th>Data</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Modal for editing -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <form id="modal-form">
+                <input type="hidden" id="modal-orcamento-id">
+                <input type="text" id="modal-descricao" placeholder="Descrição">
+                <input type="number" id="modal-valor" placeholder="Valor">
+                <select id="modal-tipo">
+                    <option value="entrada">Entrada</option>
+                    <option value="saida">Saída</option>
+                </select>
+                <button type="submit">Salvar</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
